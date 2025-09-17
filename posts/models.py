@@ -27,3 +27,5 @@ class CommentModel(models.Model):
 
     def __str__(self):
         return f"Comment by {self.user.full_name} on Post {self.post.id}"
+
+

@@ -58,3 +58,19 @@ http://127.0.0.1:8000/posts/comment/?post=2
 
 
 GET,PUT,PATCH http://127.0.0.1:8000/posts/comment/4/
+
+
+
+(for message)
+POST http://127.0.0.1:8000/messages/
+BODY :{
+    receiver,
+    message
+
+}
+
+PUT,PATCH,DELETE http://127.0.0.1:8000/messages/1/
+
+(conversation get)
+
+GET http://127.0.0.1:8000/messages/1/conversation/ 

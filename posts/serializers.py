@@ -18,3 +18,6 @@ class CommentSerializer(serializers.ModelSerializer):
         model=CommentModel
         fields="__all__"
         read_only_fields=['user']
+
+
+

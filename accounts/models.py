@@ -34,6 +34,9 @@ class CustomUserModel(AbstractBaseUser,PermissionsMixin):
     is_staff = models.BooleanField(default=False)
     objects=CustomManager()
     USERNAME_FIELD="email"
+
+    def __str__(self):
+        return f'{self.id}'
     
 class ForgotPasswordModel(models.Model):
     user=models.ForeignKey(CustomUserModel,on_delete=models.CASCADE)
