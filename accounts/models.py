@@ -28,6 +28,7 @@ ROLE_TYPE=(
 class CustomUserModel(AbstractBaseUser,PermissionsMixin):
     full_name=models.CharField(max_length=100)
     email = models.EmailField(unique=True)
+    profile = models.ImageField(upload_to='profile/', blank=True, null=True)
     phone=models.CharField(max_length=11,blank=True,null=True)
     role=models.CharField(choices=ROLE_TYPE,blank=True,null=True)
     is_active = models.BooleanField(default=True)

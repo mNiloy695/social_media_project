@@ -28,9 +28,7 @@ class MessageView(viewsets.ModelViewSet):
         if self.request.method in ['PUT','PATCH','DELETE']:
             return [permissions.IsAuthenticated(),IsOwnerOnlyMessage()]
         return [permissions.IsAdminUser()]
-    # def get_queryset(self):
-    #     return MessageModel.objects.none() 
-    
+
     @action(detail=False,methods=['get'],url_path='conversation/(?P<user_id>\d+)',permission_classes=[permissions.IsAuthenticated])
     def conversation(self,request,user_id=None):
         user=request.user

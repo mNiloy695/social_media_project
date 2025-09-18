@@ -6,7 +6,7 @@ POST http://127.0.0.1:8000/account/register/
 BODY:{ 
     full_name
     email,
-    phone
+    phone,
     role,
     password,
     confirm_password
@@ -73,4 +73,4 @@ PUT,PATCH,DELETE http://127.0.0.1:8000/messages/1/
 
 (conversation get)
 
-GET http://127.0.0.1:8000/messages/1/conversation/ 
+GET http://127.0.0.1:8000/messages/conversation/2/

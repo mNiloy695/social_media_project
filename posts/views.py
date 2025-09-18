@@ -53,7 +53,7 @@ class CommentView(viewsets.ModelViewSet):
     queryset=CommentModel.objects.all().select_related()
     serializer_class=CommentSerializer
     filter_backends = [DjangoFilterBackend]
-    filterset_fields=['post']
+    filterset_fields=['post','user']
     def get_permissions(self):
         if self.request.method in permissions.SAFE_METHODS:
             return [permissions.AllowAny()]

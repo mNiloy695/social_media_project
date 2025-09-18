@@ -6,11 +6,11 @@ class RegistrationModelSerializer(serializers.ModelSerializer):
     confirm_password=serializers.CharField(write_only=True)
     class Meta:
         model=User
-        fields=['id','full_name','email','password','confirm_password','phone']
+        fields=['id','full_name','email','password','confirm_password','phone','profile']
     
     def validate(self,attrs):
         password=attrs.get('password',None)
-        confirm_password=attrs.pop('confirm_password')
+        confirm_password=attrs.pop('confirm_password',None)
         email=attrs.get('email',None)
         if (password and confirm_password) and password !=confirm_password:
             raise serializers.ValidationError({"error":"Password and ConfirmPassword not matched !"})
