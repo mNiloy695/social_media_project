@@ -34,7 +34,7 @@ class RegistrationModelSerializer(serializers.ModelSerializer):
         if password:
             validated_data.pop('password')
             instance.set_password(password)
-        instance.set_password(password)
+       
         instance.save()
         return instance
 
