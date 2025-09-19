@@ -1,12 +1,13 @@
 from django.shortcuts import render
-from .serializers import PostSerializer,CommentSerializer
-from .models import PostModel,CommentModel
+from .serializers import PostSerializer,CommentSerializer,NotificationSerializer
+from .models import PostModel,CommentModel,Notification
 from rest_framework import viewsets
 from rest_framework import permissions
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from django_filters.rest_framework import DjangoFilterBackend
 from django.db.models import Q
+from rest_framework.views import APIView
 # Create your views here.
 
 class IsOwnerOnly(permissions.BasePermission):
@@ -67,3 +68,10 @@ class CommentView(viewsets.ModelViewSet):
         serializer.save(user=self.request.user)
 
 
+class NotificationView(APIView):
+    permission_classes=[permissions.IsAuthenticated]
+    def get(self,request):
+        notificaiton=Notification.objects.filter(post__user=request.user)
+        serializer=NotificationSerializer(notificaiton,many=True)
+        return Response(serializer.data)
+        

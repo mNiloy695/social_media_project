@@ -1,4 +1,4 @@
-from .models import PostModel,CommentModel
+from .models import PostModel,CommentModel,Notification
 from rest_framework import serializers
 
 
@@ -21,3 +21,8 @@ class CommentSerializer(serializers.ModelSerializer):
 
 
 
+class NotificationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=Notification
+        fields='__all__'
+        read_only_fields=['id','post','created_at','updated_at','title']

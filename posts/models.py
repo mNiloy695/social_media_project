@@ -29,3 +29,11 @@ class CommentModel(models.Model):
         return f"Comment by {self.user.full_name} on Post {self.post.id}"
 
 
+class Notification(models.Model):
+    title=models.CharField(max_length=100)
+    post=models.ForeignKey(PostModel,on_delete=models.CASCADE)
+    created_at=models.DateTimeField(auto_now_add=True)
+    updated_at=models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f'{self.title}'
